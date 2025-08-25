@@ -1,176 +1,125 @@
-/*base reset*/
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f5f7fa;
-    color: #333;
-    line-height: 1.6;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f9;
+  color: #333;
 }
 
-/*HEADER*/
 header {
-    background: linear-gradient(135deg, #4cafef, #1976d2);
-    color: white;
-    text-align: center;
-    padding: 80px 20px;
-    border-radius: 0 0 25px 25px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  text-align: center;
+  padding: 2rem;
+  background: #4CAF50;
+  color: white;
 }
 
 header .logo {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 10px;
+  font-size: 1.8rem;
+  font-weight: bold;
 }
 
 header p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
+  margin: 0.5rem 0;
 }
 
-header .btn {
-    display: inline-block;
-    background: #ffeb3b;
-    color: #333;
-    padding: 12px 25px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    margin: 5px;
-    transition: all 0.3s ease;
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background: white;
+  color: #4CAF50;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s;
 }
 
-header .btn:hover {
-    background: #ffc107;
-    transform: scale(1.05);
+.btn:hover {
+  background: #ddd;
 }
 
-header .btn.secondary {
-    background: #fff;
-    color: #1976d2;
+/* Features Section */
+#features {
+  padding: 2rem;
+  text-align: center;
 }
 
-/*FEATURES*/
-#features h2 {
-    padding: 60px 20px;
-    text-align: center;
+.features-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    max-width: 1000px;
-    margin: auto;
-    padding: 20px;
+.feature {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 250px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
 }
 
-.card {
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+.feature:hover {
+  transform: scale(1.05);
 }
 
-.card:hover {
-    transform: translateY(-5px);
+.feature img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
 }
 
-.card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-    color: #1976d2;
+.feature h3 {
+  margin: 0.5rem 0;
+  color: #4CAF50;
 }
 
-/* GROCERY LIST */
-#grocery {
-    background: #fff;
-    padding: 40px 20px;
-    margin: 30px auto;
-    max-width: 600px;
-    border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+/* Grocery List Section */
+#grocery-list {
+  padding: 2rem;
+  background: #fff;
+  margin-top: 2rem;
+  border-top: 3px solid #4CAF50;
 }
 
-#grocery h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #1976d2;
+.grocery-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 1rem;
 }
 
-.grocery-input {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+#grocery-list input {
+  padding: 0.5rem;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-.grocery-input input {
-    width: 70%;
-    padding: 12px;
-    border: 2px solid #1976d2;
-    border-radius: 10px 0 0 10px;
-    outline: none;
+#add-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.grocery-input button {
-    padding: 12px 20px;
-    border: none;
-    background: #1976d2;
-    color: white;
-    font-size: 1.5rem;
-    border-radius: 0 10px 10px 0;
-    cursor: pointer;
-    transition: 0.3s;
+#add-btn:hover {
+  background: #45a049;
 }
 
-.grocery-input button:hover {
-    background: #1259a5;
+#list {
+  list-style: none;
+  padding: 0;
+  max-width: 300px;
+  margin: 0 auto;
 }
 
-#groceryList {
-    list-style: none;
-    padding: 0;
-}
-
-#groceryList li {
-    background: #f0f4ff;
-    margin: 8px 0;
-    padding: 10px 15px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#groceryList li button {
-    background: red;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#groceryList li button:hover {
-    background: darkred;
-}
-
-.hidden {
-    display: none;
-}
-
-/*FOOTER*/
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #eee;
-    margin-top: 50px;
-    border-top: 1px solid #ccc;
+#list li {
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
 }
