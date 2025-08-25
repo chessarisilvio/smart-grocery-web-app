@@ -1,34 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content=""width=device-width, initial-scale="1.0">
-        <title>Smart Grocery Assistant</title>
-        <link rel=""stylesheet" href="style.css">
-    </head>
-    <body>
-        <header>
-            <div class="logo">🛒 Smart Grocery Assistant</div>
-            <p>Your personal helper for helatier shopping</p>
-            <a href="#features" class="btn">Explore Features</a>
-        </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">🛒 Smart Grocery Assistant</div>
+        <p>Your personal helper for healthier shopping</p>
+        <a href="#features" class="btn">Explore Features</a>
+        <a href="#grocery" class="btn secondary" id="openListBtn">Grocery List</a>
+    </header>
 
-        <section id="features">
-            <h2>Why choose Smart Grocery Assisant?</h2>
-            <div class="cards">
-                <div class="card">
-                    <h3>🔍 Product Scan</h3>
-                    <p>Scan and check nutritional values instantly.</p>
-                </div>
-                <div class="card">
-                    <h3>💡 Healthy Suggestions</h3>
-                    <p>Get smarter and healty food alternatives.</p>
-                </div>
+    <section id="features">
+        <h2>✨ Features</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Smart Suggestions</h3>
+                <p>Get healthier alternatives for your favorite items.</p>
             </div>
-        </section>
+            <div class="card">
+                <h3>Price Tracking</h3>
+                <p>Compare prices across different stores easily.</p>
+            </div>
+            <div class="card">
+                <h3>Nutrition Info</h3>
+                <p>See nutritional values instantly while shopping.</p>
+            </div>
+        </div>
+    </section>
 
-        <footer>
-            <p>© 2025 Smart Grocery Assistant</p>
-        </footer>
-    </body>
+    <!-- Grocery List Section -->
+    <section id="grocery" class="hidden">
+        <h2>📝 Grocery List</h2>
+        <div class="grocery-input">
+            <input type="text" id="itemInput" placeholder="Enter food item...">
+            <button id="addItemBtn">+</button>
+        </div>
+        <ul id="groceryList"></ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Smart Grocery Assistant. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
+
+
+
+
+
+

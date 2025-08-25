@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdena, Sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #f5f7fa;
     color: #333;
     line-height: 1.6;
@@ -16,9 +16,9 @@ body {
 header {
     background: linear-gradient(135deg, #4cafef, #1976d2);
     color: white;
-    text-aling: center;
+    text-align: center;
     padding: 80px 20px;
-    border-radious: 0 0 25px 25px;
+    border-radius: 0 0 25px 25px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 
@@ -26,11 +26,6 @@ header .logo {
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 10px;
-}
-
-header p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
 }
 
 header p {
@@ -46,6 +41,7 @@ header .btn {
     border-radius: 30px;
     text-decoration: none;
     font-weight: bold;
+    margin: 5px;
     transition: all 0.3s ease;
 }
 
@@ -54,24 +50,30 @@ header .btn:hover {
     transform: scale(1.05);
 }
 
+header .btn.secondary {
+    background: #fff;
+    color: #1976d2;
+}
+
 /*FEATURES*/
 #features h2 {
-    padding:60px 20px;
-    text-aling: center;
+    padding: 60px 20px;
+    text-align: center;
 }
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(autofit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     max-width: 1000px;
     margin: auto;
+    padding: 20px;
 }
 
 .card {
     background: white;
     padding: 25px;
-    border-radious: 15px;
+    border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
 }
@@ -83,7 +85,85 @@ header .btn:hover {
 .card h3 {
     font-size: 1.3rem;
     margin-bottom: 15px;
-    color: #1976d2
+    color: #1976d2;
+}
+
+/* GROCERY LIST */
+#grocery {
+    background: #fff;
+    padding: 40px 20px;
+    margin: 30px auto;
+    max-width: 600px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+#grocery h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1976d2;
+}
+
+.grocery-input {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.grocery-input input {
+    width: 70%;
+    padding: 12px;
+    border: 2px solid #1976d2;
+    border-radius: 10px 0 0 10px;
+    outline: none;
+}
+
+.grocery-input button {
+    padding: 12px 20px;
+    border: none;
+    background: #1976d2;
+    color: white;
+    font-size: 1.5rem;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.grocery-input button:hover {
+    background: #1259a5;
+}
+
+#groceryList {
+    list-style: none;
+    padding: 0;
+}
+
+#groceryList li {
+    background: #f0f4ff;
+    margin: 8px 0;
+    padding: 10px 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#groceryList li button {
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#groceryList li button:hover {
+    background: darkred;
+}
+
+.hidden {
+    display: none;
 }
 
 /*FOOTER*/
