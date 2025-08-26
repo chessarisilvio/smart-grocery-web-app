@@ -71,3 +71,35 @@ addBtn.addEventListener("click", () => {
 function updateTotal() {
   totalPriceEl.textContent = total.toFixed(2);
 }
+
+/* ================= SCROLL ANIMATION FOR 'WHY EAT HEALTHY' SECTION ================= */
+
+// Eseguiamo il codice solo dopo che la pagina è stata caricata completamente.
+document.addEventListener('DOMContentLoaded', () => {
+
+    // 1. Seleziona l'elemento che vuoi animare
+    const healthySection = document.querySelector('#why-healthy');
+
+    // 2. Controlla se l'elemento esiste per evitare errori
+    if (healthySection) {
+        
+        // 3. Crea un "Intersection Observer" per rilevare quando l'elemento è visibile
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                // Se l'elemento è entrato nell'area visibile...
+                if (entry.isIntersecting) {
+                    // ...aggiungi la classe 'show' per far partire l'animazione CSS
+                    entry.target.classList.add('show');
+                    
+                    // ...e smetti di osservarlo per non ripetere l'animazione e risparmiare risorse.
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15 // L'animazione si attiva quando il 15% dell'elemento è visibile
+        });
+
+        // 4. Avvia l'osservatore sull'elemento selezionato
+        observer.observe(healthySection);
+    }
+});

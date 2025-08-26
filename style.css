@@ -150,6 +150,40 @@ header .btn:hover {
   margin-bottom: 10px;
 }
 
+/* ================= WHY EAT HEALTHY ================= */
+#why-healthy {
+  padding: 40px 20px;
+  max-width: 700px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#why-healthy h2 {
+  font-size: 2rem;
+  color: #2a8dd8;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#why-healthy p {
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+/* ================= SCROLL ANIMATION ================= */
+.hidden-from-left {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 1s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
 
 /* ================= GROCERY LIST ================= */
 #grocery-list {
@@ -227,26 +261,4 @@ ul#list button:hover {
   margin-top: 15px;
   font-weight: bold;
   text-align: right;
-}
-
-/* ================= WHY EAT HEALTHY ================= */
-#why-healthy {
-  padding: 40px 20px;
-  max-width: 700px;
-  margin: 40px auto;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-#why-healthy h2 {
-  font-size: 2rem;
-  color: #2a8dd8;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-#why-healthy p {
-  margin-bottom: 15px;
-  font-size: 1rem;
 }
