@@ -1,57 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Smart Grocery Assistant</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+    <!-- ================= NAVBAR ================= -->
+  <nav class="navbar">
+    <div class="logo">🛒 Smart Grocery Assistant</div>
+    <div class="hamburger" id="hamburger">☰</div>
+  </nav>
+
+    <!-- ================= SIDEBAR MENU ================= -->
+  <div class="sidebar" id="sidebar">
+    <button class="close-btn" id="close-btn">×</button>
+    <ul>
+      <li><a href="https://github.com/chessarisilvio/smart-grocery-web-app" target="_blank">Who made the website</a></li>
+      <li><a href="#why-healthy">Why eat healthy?</a></li>
+    </ul>
+  </div>
+
+  <!-- ================= HEADER ================= -->
   <header>
     <div class="logo">🛒 Smart Grocery Assistant</div>
     <p>Your personal helper for healthier shopping</p>
     <a href="#features" class="btn">Explore Features</a>
   </header>
 
-  <!-- Features Section -->
+  <!-- ================= FEATURES ================= -->
   <section id="features">
     <h2>Features</h2>
     <div class="features-container">
       <div class="feature">
-        <img src="images/suggestions.jpg" alt="Smart Suggestions">
+        <img src="images/suggestions.jpg" alt="Smart Suggestions" />
         <h3>Smart Suggestions</h3>
         <p>Get personalized food recommendations based on your preferences.</p>
       </div>
       <div class="feature">
-        <img src="images/price-tracking.jpg" alt="Price Tracking">
+        <img src="images/price-tracking.jpg" alt="Price Tracking" />
         <h3>Price Tracking</h3>
         <p>Monitor prices and save money while shopping smart.</p>
       </div>
       <div class="feature">
-        <img src="images/nutrition.jpg" alt="Nutrition Info">
+        <img src="images/nutrition.jpg" alt="Nutrition Info" />
         <h3>Nutrition Info</h3>
         <p>Access detailed nutritional information for healthier choices.</p>
       </div>
     </div>
   </section>
 
-  <!-- Grocery List Section -->
+    <!-- ================= WHY EAT HEALTHY ================= -->
+  <section id="why-healthy">
+    <h2>Why Eat Healthy?</h2>
+    <p><strong>1. Because it’s good for your body:</strong> Eating fruits, vegetables, and whole foods provides essential vitamins, minerals, and energy that help your body function properly and prevent diseases.</p>
+    <p><strong>2. Because you save money:</strong> Cooking with healthy ingredients is often cheaper than buying fast food or processed snacks, reducing long-term medical and food costs.</p>
+    <p><strong>3. Because it improves your mood:</strong> A healthy diet balances blood sugar levels and supports brain health, helping you feel more positive and less stressed.</p>
+    <p><strong>4. Because it gives long-term benefits:</strong> Healthy eating habits improve your quality of life, boost your immune system, and help you live longer and better.</p>
+  </section>
+
+  <!-- ================= GROCERY LIST ================= -->
   <section id="grocery-list">
     <h2>Grocery List</h2>
     <div class="grocery-container">
-      <input type="text" id="item-input" placeholder="Add an item...">
-      <button id="add-btn">+</button>
+      <input type="text" id="item-input" placeholder="Enter product name..." />
+      <input type="number" id="price-input" placeholder="Price (€)" min="0" step="0.01" />
+      <button id="add-btn">Add</button>
     </div>
     <ul id="list"></ul>
+    <div class="total">Total: <span id="total-price">0.00</span> €</div>
   </section>
 
-  <!-- JS -->
+  <!-- ================= JS SCRIPT ================= -->
   <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
