@@ -14,7 +14,6 @@ body {
   padding-bottom: 50px;
 }
 
-
 /* ================= NAVBAR ================= */
 .navbar {
   display: flex;
@@ -85,7 +84,6 @@ body {
   color: #155c91;
 }
 
-
 /* ================= HEADER ================= */
 header {
   background: linear-gradient(135deg, #4cafef, #2a8dd8);
@@ -152,8 +150,8 @@ header .btn:hover {
 
 /* ================= WHY EAT HEALTHY ================= */
 #why-healthy {
-  padding: 40px 20px;
-  max-width: 700px;
+  padding: 40px 30px;
+  max-width: 1000px;
   margin: 40px auto;
   background: #fff;
   border-radius: 10px;
@@ -161,44 +159,46 @@ header .btn:hover {
 }
 
 #why-healthy h2 {
-  font-size: 2rem;
+  font-size: 2.3rem;
   color: #2a8dd8;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   text-align: center;
 }
 
 #why-healthy p {
-  margin-bottom: 15px;
-  font-size: 1rem;
+  margin-bottom: 18px;
+  font-size: 1.1rem;
+  line-height: 1.7;
 }
 
 /* ================= SCROLL ANIMATION ================= */
 .hidden-from-left {
-    opacity: 0;
-    transform: translateX(-100%);
-    transition: all 1s ease-out;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 1s ease-out;
 }
 
 .show {
-    opacity: 1;
-    transform: translateX(0);
+  opacity: 1;
+  transform: translateX(0);
 }
-
 
 /* ================= GROCERY LIST ================= */
 #grocery-list {
   padding: 40px 20px;
-  max-width: 600px;
+  max-width: 750px;
   margin: auto;
 }
 
 .grocery-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 20px;
 }
 
 .grocery-container input,
+.grocery-container select,
 .grocery-container button {
   padding: 10px;
   border-radius: 5px;
@@ -207,6 +207,13 @@ header .btn:hover {
 
 .grocery-container input {
   flex: 1;
+  min-width: 120px;
+}
+
+.grocery-container select {
+  min-width: 120px;
+  background: #fff;
+  cursor: pointer;
 }
 
 .grocery-container button {
@@ -219,6 +226,31 @@ header .btn:hover {
 
 .grocery-container button:hover {
   background: #2371a8;
+}
+
+/* ================= SORT MENU ================= */
+.sort-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
+  font-size: 1rem;
+}
+
+#sortSelect {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#sortSelect:hover {
+  background: #e8f5e9;
+  border-color: #4CAF50;
 }
 
 /* ================= LIST ================= */
@@ -235,10 +267,19 @@ ul#list li {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 ul#list li span {
   font-weight: bold;
+  flex: 1 1 200px;
+}
+
+ul#list li input[type="checkbox"] {
+  transform: scale(1.3);
+  cursor: pointer;
+  margin-right: 10px;
 }
 
 ul#list button {
