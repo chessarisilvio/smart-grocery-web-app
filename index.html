@@ -24,28 +24,28 @@
   </div>
 
   <!-- ================= HEADER ================= -->
-  <header>
-    <div class="logo">🛒 Smart Grocery Assistant</div>
+  <header class="hidden-from-left">
+    <h1 class="logo">🛒 Smart Grocery Assistant</h1>
     <p>Your personal helper for healthier shopping</p>
     <a href="#features" class="btn">Explore Features</a>
   </header>
 
   <!-- ================= FEATURES ================= -->
-  <section id="features">
+  <section id="features" class="hidden-from-right">
     <h2>Features</h2>
     <div class="features-container">
       <div class="feature">
-        <img src="images/suggestions.jpg" alt="Smart Suggestions" />
+        <img src="images/suggestions.jpg" alt="Smart food suggestions preview" />
         <h3>Smart Suggestions</h3>
         <p>Get personalized food recommendations based on your preferences.</p>
       </div>
       <div class="feature">
-        <img src="images/price-tracking.jpg" alt="Price Tracking" />
+        <img src="images/price-tracking.jpg" alt="Price tracking comparison chart" />
         <h3>Price Tracking</h3>
         <p>Monitor prices and save money while shopping smart.</p>
       </div>
       <div class="feature">
-        <img src="images/nutrition.jpg" alt="Nutrition Info" />
+        <img src="images/nutrition.jpg" alt="Nutrition information example" />
         <h3>Nutrition Info</h3>
         <p>Access detailed nutritional information for healthier choices.</p>
       </div>
@@ -62,8 +62,10 @@
   </section>
 
   <!-- ================= GROCERY LIST ================= -->
-  <section id="grocery-list">
+  <section id="grocery-list" class="hidden-from-right">
     <h2>Grocery List</h2>
+
+    <!-- Input prodotti -->
     <div class="grocery-container">
       <input type="text" id="item-input" placeholder="Enter product name..." />
       <input type="number" id="price-input" placeholder="Price (€)" min="0" step="0.01" />
@@ -80,7 +82,26 @@
       <button id="add-btn">Add</button>
     </div>
 
-    <!-- ================= SORT MENU ================= -->
+    <!-- Filtro per categoria -->
+    <div class="filter-container">
+      <label for="filterCategory">Show only:</label>
+      <select id="filterCategory">
+        <option value="all">All</option>
+        <option value="Frutta">Frutta</option>
+        <option value="Verdura">Verdura</option>
+        <option value="Carne">Carne</option>
+        <option value="Pesce">Pesce</option>
+        <option value="Bevande">Bevande</option>
+        <option value="Dolci">Dolci</option>
+      </select>
+    </div>
+
+    <!-- Search bar -->
+    <div class="search-container">
+      <input type="text" id="search-bar" placeholder="Search in list..." />
+    </div>
+
+    <!-- Sort menu -->
     <div class="sort-container">
       <label for="sortSelect">Sort by:</label>
       <select id="sortSelect">
@@ -91,8 +112,15 @@
       </select>
     </div>
 
+    <!-- Lista spesa -->
     <ul id="list"></ul>
     <div class="total">Total: <span id="total-price">0.00</span> €</div>
+
+    <!-- Breakdown per categoria -->
+    <div id="category-breakdown"></div>
+
+    <!-- Save list -->
+    <button id="save-btn">💾 Save List</button>
   </section>
 
   <!-- ================= JS SCRIPT ================= -->

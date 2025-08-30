@@ -1,7 +1,7 @@
 /* ================= SELECT ELEMENTS ================= */
 const itemInput = document.getElementById("item-input");
 const priceInput = document.getElementById("price-input");
-const quantityInput = document.getElementById("quantity-input"); // nuovo input quantità
+const quantityInput = document.getElementById("quantity-input");
 const categoryInput = document.getElementById("category-input");
 const addBtn = document.getElementById("add-btn");
 const list = document.getElementById("list");
@@ -12,7 +12,10 @@ const sidebar = document.getElementById("sidebar");
 const closeBtn = document.getElementById("close-btn");
 
 const sortSelect = document.getElementById("sortSelect");
-
+const searchBar = document.getElementById("search-bar");          
+const filterCategory = document.getElementById("filterCategory"); 
+const breakdownEl = document.getElementById("category-breakdown");
+const saveBtn = document.getElementById("save-btn");
 let total = 0;
 let items = [];
 
@@ -91,7 +94,9 @@ addBtn.addEventListener("click", () => {
 
   if (item && !isNaN(price) && !isNaN(quantity) && quantity > 0) {
     let displayName = item;
-    if (unhealthyMap[item.toLowerCase()]) displayName += ` (Try: ${unhealthyMap[item.toLowerCase()]})`;
+    if (unhealthyMap[item.toLowerCase()]) {
+      displayName += ` (Try: ${unhealthyMap[item.toLowerCase()]})`;
+    }
 
     items.push({ name: displayName, price, quantity, category });
 
@@ -109,7 +114,17 @@ function renderList() {
   list.innerHTML = "";
   total = 0;
 
-  items.forEach((item, index) => {
+  // Filtro + ricerca
+  const searchTerm = searchBar.value.toLowerCase();
+  const selectedCategory = filterCategory.value;
+
+  const filteredItems = items.filter(item => {
+    const matchesSearch = item.name.toLowerCase().includes(searchTerm);
+    const matchesCategory = selectedCategory === "all" || item.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
+
+  filteredItems.forEach((item, index) => {
     const li = document.createElement("li");
     li.innerHTML = `
       <span>${item.name} - ${item.category} - €${item.price.toFixed(2)} x ${item.quantity}</span>
@@ -131,7 +146,8 @@ function renderList() {
     });
 
     li.querySelector(".delete").addEventListener("click", () => {
-      items.splice(index, 1);
+      const realIndex = items.indexOf(item);
+      items.splice(realIndex, 1);
       renderList();
     });
 
@@ -140,12 +156,26 @@ function renderList() {
   });
 
   updateTotal();
+  updateBreakdown();
 }
-
 
 /* ================= UPDATE TOTAL ================= */
 function updateTotal() {
   totalPriceEl.textContent = total.toFixed(2);
+}
+
+/* ================= CATEGORY BREAKDOWN ================= */
+function updateBreakdown() {
+  const breakdown = {};
+  items.forEach(item => {
+    if (!breakdown[item.category]) breakdown[item.category] = 0;
+    breakdown[item.category] += item.price * item.quantity;
+  });
+
+  breakdownEl.innerHTML = "<h3>Category Breakdown</h3>";
+  for (const cat in breakdown) {
+    breakdownEl.innerHTML += `<p><strong>${cat}:</strong> €${breakdown[cat].toFixed(2)}</p>`;
+  }
 }
 
 /* ================= SORTING ================= */
@@ -165,20 +195,48 @@ sortSelect.addEventListener("change", () => {
   renderList();
 });
 
+/* ================= SEARCH + FILTER EVENTS ================= */
+searchBar.addEventListener("input", renderList);
+filterCategory.addEventListener("change", renderList);
+
+/* ================= SAVE LIST ================= */
+saveBtn.addEventListener("click", () => {
+  let content = "Grocery List:\n\n";
+  items.forEach(item => {
+    content += `${item.name} (${item.category}) - €${item.price.toFixed(2)} x ${item.quantity}\n`;
+  });
+  content += `\nTOTAL: €${total.toFixed(2)}`;
+
+  const blob = new Blob([content], { type: "text/plain" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "grocery-list.txt";
+  a.click();
+
+  URL.revokeObjectURL(url);
+});
+
 /* ================= SCROLL ANIMATION ================= */
 document.addEventListener('DOMContentLoaded', () => {
-  const healthySection = document.querySelector('#why-healthy');
+  const animatedElements = document.querySelectorAll('.hidden-from-left, .hidden-from-right');
 
-  if (healthySection) {
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
 
-    observer.observe(healthySection);
-  }
+  animatedElements.forEach(el => {
+    observer.observe(el);
+
+    // fallback: se è già visibile all'apertura, aggiungi subito la classe show
+    if (el.getBoundingClientRect().top < window.innerHeight) {
+      el.classList.add('show');
+    }
+  });
 });

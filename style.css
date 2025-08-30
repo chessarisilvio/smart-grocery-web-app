@@ -30,6 +30,9 @@ body {
 .navbar .logo {
   font-size: 1.5rem;
   font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .hamburger {
@@ -141,11 +144,13 @@ header .btn:hover {
 }
 
 .feature img {
+  display: block;
   width: 100%;
   height: 160px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 10px;
+  background: #f1f1f1;
 }
 
 /* ================= WHY EAT HEALTHY ================= */
@@ -174,8 +179,14 @@ header .btn:hover {
 /* ================= SCROLL ANIMATION ================= */
 .hidden-from-left {
   opacity: 0;
-  transform: translateX(-100%);
-  transition: all 1s ease-out;
+  transform: translateX(-100px);
+  transition: all 0.8s ease-out;
+}
+
+.hidden-from-right {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: all 0.8s ease-out;
 }
 
 .show {
@@ -226,6 +237,49 @@ header .btn:hover {
 
 .grocery-container button:hover {
   background: #2371a8;
+}
+
+/* ================= FILTER ================= */
+.filter-container {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-container label {
+  font-weight: bold;
+  color: #2a8dd8;
+}
+
+#filterCategory {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* ================= SEARCH BAR ================= */
+.search-container {
+  margin: 15px 0;
+  text-align: center;
+}
+
+#search-bar {
+  width: 80%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+#search-bar:focus {
+  border-color: #2a8dd8;
+  outline: none;
+  box-shadow: 0 0 5px rgba(42,141,216,0.4);
 }
 
 /* ================= SORT MENU ================= */
@@ -302,4 +356,52 @@ ul#list button:hover {
   margin-top: 15px;
   font-weight: bold;
   text-align: right;
+}
+
+/* ================= CATEGORY BREAKDOWN ================= */
+#category-breakdown {
+  margin-top: 20px;
+  padding: 15px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#category-breakdown h3 {
+  font-size: 1.3rem;
+  color: #2a8dd8;
+  margin-bottom: 10px;
+}
+
+#category-breakdown ul {
+  list-style: none;
+}
+
+#category-breakdown li {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #444;
+}
+
+/* ================= SAVE LIST BUTTON ================= */
+#save-btn {
+  margin-top: 20px;
+  background: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+#save-btn:hover {
+  background: #388E3C;
+}
+
+/* ================= BUTTON FOCUS ================= */
+button:focus {
+  outline: 2px solid #2a8dd8;
+  outline-offset: 2px;
 }
