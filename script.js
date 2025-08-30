@@ -16,6 +16,10 @@ const searchBar = document.getElementById("search-bar");
 const filterCategory = document.getElementById("filterCategory"); 
 const breakdownEl = document.getElementById("category-breakdown");
 const saveBtn = document.getElementById("save-btn");
+
+const darkModeToggle = document.getElementById("dark-mode-toggle");
+const ctx = document.getElementById("categoryChart").getContext("2d");
+
 let total = 0;
 let items = [];
 
@@ -100,10 +104,11 @@ addBtn.addEventListener("click", () => {
 
     items.push({ name: displayName, price, quantity, category });
 
+    // Reset campi
     itemInput.value = "";
     priceInput.value = "";
     quantityInput.value = "1";
-    categoryInput.value = "Altro";
+    categoryInput.value = "other";
 
     renderList();
   }
@@ -114,7 +119,6 @@ function renderList() {
   list.innerHTML = "";
   total = 0;
 
-  // Filtro + ricerca
   const searchTerm = searchBar.value.toLowerCase();
   const selectedCategory = filterCategory.value;
 
@@ -124,7 +128,7 @@ function renderList() {
     return matchesSearch && matchesCategory;
   });
 
-  filteredItems.forEach((item, index) => {
+  filteredItems.forEach(item => {
     const li = document.createElement("li");
     li.innerHTML = `
       <span>${item.name} - ${item.category} - €${item.price.toFixed(2)} x ${item.quantity}</span>
@@ -164,7 +168,25 @@ function updateTotal() {
   totalPriceEl.textContent = total.toFixed(2);
 }
 
-/* ================= CATEGORY BREAKDOWN ================= */
+/* ================= CATEGORY BREAKDOWN + CHART ================= */
+let categoryChart = new Chart(ctx, {
+  type: "pie",
+  data: {
+    labels: [],
+    datasets: [{
+      label: "shop for category",
+      data: [],
+      backgroundColor: [
+        "#FF6384", "#36A2EB", "#FFCE56", 
+        "#4BC0C0", "#9966FF", "#FF9F40", "#C9CBCF"
+      ]
+    }]
+  },
+  options: {
+    responsive: true
+  }
+});
+
 function updateBreakdown() {
   const breakdown = {};
   items.forEach(item => {
@@ -176,6 +198,10 @@ function updateBreakdown() {
   for (const cat in breakdown) {
     breakdownEl.innerHTML += `<p><strong>${cat}:</strong> €${breakdown[cat].toFixed(2)}</p>`;
   }
+
+  categoryChart.data.labels = Object.keys(breakdown);
+  categoryChart.data.datasets[0].data = Object.values(breakdown);
+  categoryChart.update();
 }
 
 /* ================= SORTING ================= */
@@ -233,10 +259,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   animatedElements.forEach(el => {
     observer.observe(el);
-
-    // fallback: se è già visibile all'apertura, aggiungi subito la classe show
     if (el.getBoundingClientRect().top < window.innerHeight) {
       el.classList.add('show');
     }
   });
+});
+
+/* ================= DARK MODE ================= */
+darkModeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+  darkModeToggle.textContent = 
+    document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
 });
